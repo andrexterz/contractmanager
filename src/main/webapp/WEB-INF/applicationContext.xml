@@ -3,7 +3,6 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
-       xmlns:p="http://www.springframework.org/schema/p"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:util="http://www.springframework.org/schema/util"
        xmlns:aop="http://www.springframework.org/schema/aop"
@@ -15,12 +14,41 @@
           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd
           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
     
-    <mvc:annotation-driven/>
-    <context:component-scan base-package="br.al.contractmanager.controllers, br.al.contractmanager.dao"/>
+    <mvc:annotation-driven />
+    <context:component-scan base-package="br.al.contractmanager.controllers,br.al.contractmanager.dao"/>
+    
+    <util:properties id="applicationSettings" location="classpath:br/al/contractmanager/conf/settings.properties" />
+    <context:property-placeholder properties-ref="applicationSettings" />
+
     
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/views/"/>
         <property name="suffix" value=".xhtml" />
     </bean>
+    
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="org.postgresql.Driver" />
+        <property name="url" value="${jdbc.databaseString}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+    </bean>
+    
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">        
+        <property name="dataSource" ref="dataSource" />
+        <property name="packagesToScan" value="br.al.contractmanager.models" />
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+                <prop key="hibernate.show_sql">true</prop> 
+                <prop key="hibernate.bytecode.use_reflection_optimizer">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
+    </bean>
 
+    <bean id="txManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    
+    <tx:annotation-driven transaction-manager="txManager" />
 </beans>

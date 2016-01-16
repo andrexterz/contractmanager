@@ -5,11 +5,18 @@
  */
 package br.al.contractmanager.models;
 
+import javax.persistence.Entity;
+
 /**
  *
- * @author andre luiz fernandes ribeiro barca
+ * @author Andre Luiz Fernandes Ribeiro Barca (andrexterz@gmail.com)
  */
-public class Arquivo {
+
+@Entity
+public class Arquivo extends Base {
+
+    public Arquivo() {
+    }
     
     public Arquivo(String nome, byte[] conteudo, String tipo) {
         this.nome = nome;
