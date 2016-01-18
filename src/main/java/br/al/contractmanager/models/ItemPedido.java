@@ -5,24 +5,14 @@
  */
 package br.al.contractmanager.models;
 
-import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 /**
  *
  * @author Andre Luiz Fernandes Ribeiro Barca <andrexterz@gmail.com>
  */
 
-@Entity
-public class Departamento extends Base {
+//@Entity
+public class ItemPedido extends Base {
     
-    private String nome;
-    
-    @OneToOne
-    private Usuario responsavel;
-    
-    @OneToMany(mappedBy = "departamento")
-    private List<Usuario> usuarios;
 }

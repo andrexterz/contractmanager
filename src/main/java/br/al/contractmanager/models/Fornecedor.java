@@ -5,22 +5,23 @@
  */
 package br.al.contractmanager.models;
 
-import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
 
 /**
  *
  * @author Andre Luiz Fernandes Ribeiro Barca <andrexterz@gmail.com>
  */
 
-@Entity
-public class Fornecedor extends Base {
+//@Entity
+public class Fornecedor extends Interessado {
 
-    private String nome;
     private String cnpj;
-    @OneToMany
-    private List<Contato> contatos;
-    
-    
+
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
 }

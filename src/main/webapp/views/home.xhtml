@@ -10,10 +10,13 @@
             <div id="content" class="content transitionDefault">
                 #{msg.appname} | #{arquivoController.filename}
                 <h:form id="novoArquivoForm">
-                    <h:commandButton id="novoArquivoButton" value="add new file"
-                                     actionListener="#{arquivoController.createArquivo}"/>
                     <h:commandButton id="messageButton" value="print msg"
-                                     actionListener="#{arquivoController.printMessage}"/>
+                                     actionListener="#{arquivoController.printMessage}"/><br/>
+                    <h:commandButton id="novoArquivoButton" value="add new file"
+                                     actionListener="#{arquivoController.createArquivo}"/><br/>
+                    <h:commandButton id="novoUsuarioButton" value="add new user"
+                                     action="salvaUsuario"
+                                     actionListener="#{usuarioController.novoUsuario}"/><br/>
                 </h:form>
             </div>
         </ui:define>

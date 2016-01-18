@@ -9,7 +9,9 @@ package br.al.contractmanager.models;
  *
  * @author Andre Luiz Fernandes Ribeiro Barca <andrexterz@gmail.com>
  */
-public enum StatusPedido {
+
+
+public enum StatusPedidoEnum {
     
     ABERTO("aberto"),
     EM_PRODUCAO("em produção"),
@@ -22,7 +24,7 @@ public enum StatusPedido {
     
     private final String nome;
     
-    private StatusPedido(String nome) {
+    private StatusPedidoEnum(String nome) {
         this.nome = nome;
     }
     

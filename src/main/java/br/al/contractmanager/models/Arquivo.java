@@ -30,44 +30,26 @@ public class Arquivo extends Base {
     
     private String tipo;
 
-    /**
-     * @return the nome
-     */
     public String getNome() {
         return nome;
     }
-
-    /**
-     * @param nome the nome to set
-     */
+   
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-    /**
-     * @return the conteudo
-     */
     public byte[] getConteudo() {
         return conteudo;
     }
 
-    /**
-     * @param conteudo the conteudo to set
-     */
     public void setConteudo(byte[] conteudo) {
         this.conteudo = conteudo;
     }
 
-    /**
-     * @return the tipo
-     */
     public String getTipo() {
         return tipo;
     }
 
-    /**
-     * @param tipo the tipo to set
-     */
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }

@@ -5,14 +5,25 @@
  */
 package br.al.contractmanager.models;
 
+import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.Temporal;
 
 /**
  *
  * @author Andre Luiz Fernandes Ribeiro Barca <andrexterz@gmail.com>
  */
 
-@Entity
+//@Entity
 public class Estoque extends Base {
     
+
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date inicioContrato;
+    
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date terminoContrato;
+    
+    private List<ItemEstoque> itens;
 }

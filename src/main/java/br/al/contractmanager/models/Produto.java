@@ -12,7 +12,7 @@ import javax.persistence.Entity;
  * @author Andre Luiz Fernandes Ribeiro Barca <andrexterz@gmail.com>
  */
 
-@Entity
+//@Entity
 public class Produto extends Base {
 
     public Produto() {
@@ -30,60 +30,36 @@ public class Produto extends Base {
     private String descricao;
     private String unidade;
 
-    /**
-     * @return the codigo
-     */
+   
     public String getCodigo() {
         return codigo;
     }
 
-    /**
-     * @param codigo the codigo to set
-     */
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
-    /**
-     * @return the nome
-     */
     public String getNome() {
         return nome;
     }
 
-    /**
-     * @param nome the nome to set
-     */
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-    /**
-     * @return the descricao
-     */
     public String getDescricao() {
         return descricao;
     }
 
-    /**
-     * @param descricao the descricao to set
-     */
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
 
-    /**
-     * @return the unidade
-     */
     public String getUnidade() {
         return unidade;
     }
 
-    /**
-     * @param unidade the unidade to set
-     */
     public void setUnidade(String unidade) {
         this.unidade = unidade;
     }
-    
 }
