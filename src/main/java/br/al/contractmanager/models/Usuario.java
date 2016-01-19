@@ -19,6 +19,19 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Usuario extends Base {
 
+    public Usuario() {
+   
+    }
+
+    public Usuario(String nomeUsuario, String nomeCompleto, String matricula, String password, PerfilEnum perfil, Departamento departamento) {
+        this.nomeUsuario = nomeUsuario;
+        this.nomeCompleto = nomeCompleto;
+        this.matricula = matricula;
+        this.password = password;
+        this.perfil = perfil;
+        this.departamento = departamento;
+    }
+    
     @Column(columnDefinition = "character varying(16)")
     private String nomeUsuario;
     

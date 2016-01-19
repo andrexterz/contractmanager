@@ -15,7 +15,7 @@
           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
     
     <mvc:annotation-driven />
-    <context:component-scan base-package="br.al.contractmanager.controllers,br.al.contractmanager.dao"/>
+    <context:component-scan base-package="br.al.contractmanager.controllers,br.al.contractmanager.services,br.al.contractmanager.dao"/>
     
     <util:properties id="applicationSettings" location="classpath:br/al/contractmanager/conf/settings.properties" />
     <context:property-placeholder properties-ref="applicationSettings" />
@@ -49,6 +49,5 @@
     <bean id="txManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
-    
     <tx:annotation-driven transaction-manager="txManager" />
 </beans>

@@ -74,12 +74,23 @@ public class UsuarioDao {
     }
 
     @Transactional(readOnly = true)
+    public Usuario buscar(Long id) {
+        Session session = sessionFactory.getCurrentSession();
+        try {
+            return session.get(Usuario.class, id);
+        } catch (HibernateException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+    @Transactional(readOnly = true)
     public List<Usuario> buscar(String termo) {
         Session session = sessionFactory.getCurrentSession();
         return session.createCriteria(Usuario.class)
                 .add(Restrictions.or(Restrictions.eq("matricula", termo),
-                                Restrictions.like("nomeUsuario", termo, MatchMode.ANYWHERE).ignoreCase(),
-                                Restrictions.like("nomeCompleto", termo, MatchMode.ANYWHERE).ignoreCase()))
+                        Restrictions.like("nomeUsuario", termo, MatchMode.ANYWHERE).ignoreCase(),
+                        Restrictions.like("nomeCompleto", termo, MatchMode.ANYWHERE).ignoreCase()))
                 .setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY)
                 .list();
     }
@@ -103,9 +114,9 @@ public class UsuarioDao {
         try {
             Criteria criteria = session.createCriteria(Usuario.class);
             criteria.add(Restrictions.or(Restrictions.eq("matricula", termo),
-                                    Restrictions.like("nomeUsuario", termo, MatchMode.ANYWHERE).ignoreCase(),
-                                    Restrictions.like("nomeCompleto", termo, MatchMode.ANYWHERE).ignoreCase()))
-            .setProjection(Projections.distinct(Projections.id()));
+                    Restrictions.like("nomeUsuario", termo, MatchMode.ANYWHERE).ignoreCase(),
+                    Restrictions.like("nomeCompleto", termo, MatchMode.ANYWHERE).ignoreCase()))
+                    .setProjection(Projections.distinct(Projections.id()));
             return ((Long) criteria.setProjection(Projections.rowCount()).uniqueResult()).intValue();
         } catch (HibernateException e) {
             System.out.println(e.getMessage());
