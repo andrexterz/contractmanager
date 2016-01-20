@@ -22,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 @Scope(value = "singleton")
 public class ArquivoDao {
+    
 
     @Autowired
     private SessionFactory sessionFactory;

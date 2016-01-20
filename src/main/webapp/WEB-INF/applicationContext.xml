@@ -15,17 +15,18 @@
           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
     
     <mvc:annotation-driven />
+    <mvc:resources mapping="/static/*.html" location="/static/" cache-period="2592000" />
     <context:component-scan base-package="br.al.contractmanager.controllers,br.al.contractmanager.services,br.al.contractmanager.dao"/>
     
     <util:properties id="applicationSettings" location="classpath:br/al/contractmanager/conf/settings.properties" />
     <context:property-placeholder properties-ref="applicationSettings" />
 
-    
+    <!--
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/views/"/>
         <property name="suffix" value=".xhtml" />
     </bean>
-    
+    -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="org.postgresql.Driver" />
         <property name="url" value="${jdbc.databaseString}" />
